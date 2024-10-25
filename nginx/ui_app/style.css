@@ -1,0 +1,111 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f5;
+    font-family: Arial, sans-serif;
+}
+
+.my_fancy_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    width: 320px;
+    transition: box-shadow 0.3s ease;
+}
+
+.my_fancy_box:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.user_interaction_text {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #444;
+    font-size: 15px;
+}
+
+.input_box {
+    display: block;
+    margin-bottom: 20px;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+}
+
+.input_box:focus {
+    border-color: #6c63ff;
+    outline: none;
+}
+
+.checkbox_label {
+    font-size: 14px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox_label input {
+    margin-right: 10px;
+}
+
+.submit_button {
+    padding: 12px 24px;
+    background-color: #ccc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease;
+}
+
+.submit_button.active{
+    background-color: #6c63ff;
+    cursor: pointer;
+}
+
+.submit_button:hover {
+    background-color: #554bd4;
+}
+
+.user-list {
+    margin-top: 40px;
+    width: 320px;
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #fafafa;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.user-list-header {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: #333;
+}
+
+.checkbox_label a {
+    margin-left: 5px; 
+}
+
+.header{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+

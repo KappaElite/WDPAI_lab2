@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDPAI Lab1</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="requests_async.js" defer></script>
+</head>
+<body>
+    <div class="my_fancy_box">
+        <h1 class="header">Add user</h1>
+
+        <div class="user_interaction">
+            <label class="user_interaction_text">First name</label>
+            <input class="input_box" type="text" name="first_name" placeholder="First name">
+            
+            <label class="user_interaction_text">Last name</label>
+            <input class="input_box" type="text" name="last_name" placeholder="Last name">
+            
+            <label class="user_interaction_text">Role</label>
+            <select class="input_box" name="select_role">
+                <option value="CEO">CEO</option>
+                <option value="Manager">Manager</option>
+                <option value="Student">Student</option>
+                
+            </select>
+        </div>
+
+        <label class="checkbox_label">
+            <input type="checkbox" name="privacy_policy" value="accepted">
+            You agree to our <a href="#">privacy policy</a>.
+        </label>
+
+        <button class="submit_button" type="submit" disabled>Submit</button>
+
+        <div class="user-list">
+            <h2 class="user-list-header">Current Users</h2>
+            <ul id="user-list"></ul>
+        </div>
+    </div>
+
+
+
+ 
+
+
+</body>
+</html>
