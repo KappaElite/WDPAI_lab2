@@ -1,14 +1,20 @@
 import json
+import uuid
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from typing import Type
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
 
+def generate_id():
+    return str(uuid.uuid4())
+
+
 # Define the request handler class by extending BaseHTTPRequestHandler.
 # This class will handle HTTP requests that the server receives.
 class SimpleRequestHandler(BaseHTTPRequestHandler):
     user_list = [{
+        'id': generate_id(),
         'first_name': 'Milosz',
         'last_name': 'Pisulak',
         'role': 'student'
@@ -56,6 +62,8 @@ class SimpleRequestHandler(BaseHTTPRequestHandler):
         # Decode the received byte data and parse it as JSON.
         # We expect the POST request body to contain JSON-formatted data.
         received_data: dict = json.loads(post_data.decode())
+
+        received_data["id"] = generate_id()
         # Prepare the response data.
         self.user_list.append(received_data)
         # It includes a message indicating it's a POST request and the data we received from the client.
@@ -76,18 +84,20 @@ class SimpleRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps(response).encode())
 
     def do_DELETE(self) -> None:
-        try:
-            item_index = int(self.path.split('/')[-1])
-            deleted_item = self.user_list.pop(item_index)
+        user_id = self.path.split('/')[-1]  
+        user_to_delete = next((user for user in self.user_list if user["id"] == user_id), None)
+
+        if user_to_delete:
+            self.user_list.remove(user_to_delete)
             response = {
-                "message": f"Item at index {item_index} was deleted",
-                "deleted_item": deleted_item,
+                "message": f"User with ID {user_id} was deleted",
+                "deleted_item": user_to_delete,
                 "updated_list": self.user_list
             }
             self.send_response(200)
-        except(IndexError, ValueError):
+        else:
             response = {
-                "message": "Invalid index. Operation failed",
+                "message": "User not found. Operation failed",
                 "current_list": self.user_list
             }
             self.send_response(400)

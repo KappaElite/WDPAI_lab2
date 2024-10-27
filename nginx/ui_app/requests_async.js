@@ -58,7 +58,7 @@ function displayItems(items) {
     const itemList = document.getElementById("user-list"); 
     itemList.innerHTML = ""; 
 
-    items.forEach((item, index) => {
+    items.forEach((item) => {
         const listItem = document.createElement("li");
         listItem.textContent = `${item.first_name} ${item.last_name} (${item.role})`;
 
@@ -66,7 +66,8 @@ function displayItems(items) {
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
         deleteButton.onclick = function () {
-            deleteItem(index);
+            console.log("Id uytkowniak:" + item.id)
+            deleteItem(item.id);
         };
 
         listItem.appendChild(deleteButton);
@@ -77,9 +78,9 @@ function displayItems(items) {
 
 
 
-async function deleteItem(index) {
+async function deleteItem(id) {
     try {
-        const response = await fetch(`http://localhost:8000/${index}`, {
+        const response = await fetch(`http://localhost:8000/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
