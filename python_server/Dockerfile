@@ -7,8 +7,11 @@ WORKDIR /usr/src/app
 # Copy the Python server script into the container
 COPY server.py .
 
-# Install watchdog
-RUN pip install --no-cache-dir watchdog
+RUN apt-get update && apt-get install -y \
+    libpq-dev gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir watchdog psycopg2
 
 # Expose the port that your Python server will run on
 EXPOSE 8000

@@ -1,0 +1,8 @@
+.idea
+/postgres_data
+/venv
+/python_server/.idea
+/python_server/.DS_Store
+.DS_Store
+/nginx/.idea
+/nginx/.DS_Store

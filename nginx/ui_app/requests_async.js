@@ -57,19 +57,14 @@ async function fetchItems() {
 function displayItems(items) {
     const itemList = document.getElementById("user-list"); 
     itemList.innerHTML = ""; 
-
     items.forEach((item) => {
         const listItem = document.createElement("li");
         listItem.textContent = `${item.first_name} ${item.last_name} (${item.role})`;
-
-        
         const deleteButton = document.createElement("button");
         deleteButton.textContent = "Delete";
         deleteButton.onclick = function () {
-            console.log("Id uytkowniak:" + item.id)
             deleteItem(item.id);
         };
-
         listItem.appendChild(deleteButton);
         itemList.appendChild(listItem);
     });
